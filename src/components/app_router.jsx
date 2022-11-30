@@ -20,10 +20,11 @@ const AppRouter = () => {
         <Route path='/instagram' element={<Instagram />} />
         <Route path='/facebook' element={<Facebook />} />
         <Route path='/newdis' element={<Add_disaster />} />
-        <Route path='/register' element={<Register />} />
         <Route path='/about' element ={<About />} />
         <Route path='/donations' element ={<Donation />} /> 
-        <Route path='/Dis' element= {<Dis/>} />
+        <Route path='/:id' element= {<Dis/>} />
+        <Route path='/:id/register' element={<Register />} />
+        
       </Routes>
     </BrowserRouter>
   )

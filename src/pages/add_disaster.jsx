@@ -1,8 +1,37 @@
 import React from 'react'
 import NavBar from '../components/nav_bar'
-import { TextField } from "@mui/material";
 import { NavLink } from 'react-router-dom'
 
+let arraycampanas = JSON.parse(localStorage.getItem("Campañas"));
+
+const getCircularReplacer = () => {
+  const seen = new WeakSet();
+  return (key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      if (seen.has(value)) {
+        return;
+      }
+      seen.add(value);
+    }
+    return value;
+  };
+};
+
+function save_register(a,b,c,d,e,f,g){
+  let user = {
+      Titulo: a,
+      Descripcion: b,
+      Direccion: c,
+      Donacion: d,
+      Cuenta: e,
+      Trabajo: f,
+      Telefono: g,
+  };
+  
+  arraycampanas = JSON.parse(localStorage.getItem("Campañas"))
+  arraycampanas.push(user);
+  localStorage.setItem("Campañas", JSON.stringify(arraycampanas, getCircularReplacer()));
+}
 
 export const Add_disaster = () => {
   return (
@@ -16,24 +45,22 @@ export const Add_disaster = () => {
         Título <input type = 'text' id = 'title'/>
       </div>
       <div>
-        <input type = 'text' id = 'description'/>
-      </div>
-      <div>
-        Insertar imágenes
+        Descripciopn<input type = 'text' id = 'description'/>
       </div>
       <div>
         Localización <input type = 'text' id = 'address' />
       </div>
       <div>
-        Donaciones <select id = 'donations'>
-          <option value = '1'>Si</option>
-          <option value = '2'>No</option>
+        Donaciones <select id = 'Donaciones'>
+          <option value = 'BancoEstado'>BancoEstado</option>
+          <option value = 'Banco Santander'>Banco Santander</option>
         </select>
+        <input tpye = 'text' id = 'numero cuenta'/>
       </div>
       <div>
         Trabajo Voluntario <select id = 'work'>
-          <option value = '1'>Si</option>
-          <option value = '2'>No</option>
+          <option value = 'Si'>Si</option>
+          <option value = 'No'>No</option>
         </select>
       </div>
       <div>
@@ -43,7 +70,15 @@ export const Add_disaster = () => {
         <NavLink to = '/'>
           <button> Cancelar </button>
         </NavLink>
-       <button> Publicar </button>
+        <NavLink to = '/'>
+       <button onClick={() => save_register(document.getElementById('title').value,
+                              document.getElementById('description').value,
+                              document.getElementById('address').value,
+                              document.getElementById('Donaciones').value,
+                              document.getElementById('numero cuenta').value,
+                              document.getElementById('work').value,
+                              document.getElementById('phone').value)}> Publicar </button>
+      </NavLink>
       </div>
     </div>
   )
