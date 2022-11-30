@@ -1,0 +1,21 @@
+{"campaign" : 
+    [ { 
+        "titulo": "Incendio en Valparaiso",
+        "descripcion": "Un petardo provocó un incendio forestal en las cercanías de valparaíso",
+        "direccion": "Ministro Carvajal con Ministro Carvajal",
+        "donacion": "BancoEstado",
+        "cuenta": "1603739643",
+        "trabajo": "Si",
+        "telefono": "+56912345654",
+        "img": "../assets/incendio_valpo.jpg"
+    }, 
+    {
+        "titulo": "Inundación en Santa Laura",
+        "descripcion": "Las constantes lluvias inundaron las calles de la gran avenida de Santa Laura y han dejado las calles un desastre",
+        "direccion": "San Bernardo, Santa Laura",
+        "donacion": "Banco Santander",
+        "cuenta": "2345657654",
+        "trabajo": "No",
+        "telefono": "18929034",
+        "img": "../assets/foto-lluvia.jpg"
+  }]}

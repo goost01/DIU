@@ -1,0 +1,22 @@
+import React from 'react'
+
+import { NavLink } from 'react-router-dom'
+
+
+export const About = () => {
+    return(
+        <div className = 'page'>
+            
+            <NavLink to ='/'> Inicio</NavLink>
+            {'>'}
+            Nosotros
+            <h2 className = 'page__title'>Página en construcción</h2>
+            <NavLink to ='/'>
+                <button>Volver</button>
+            </NavLink>
+        </div>
+        
+    )
+}
+
+export default About
