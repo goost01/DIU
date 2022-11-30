@@ -1,8 +1,39 @@
 import React from 'react'
 import NavBar from '../components/nav_bar'
-import { Button, TextField } from "@mui/material";
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
+let arraycampanas = JSON.parse(localStorage.getItem("Campañas"));
+
+const getCircularReplacer = () => {
+    const seen = new WeakSet();
+    return (key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (seen.has(value)) {
+          return;
+        }
+        seen.add(value);
+      }
+      return value;
+    };
+  };
+
+function save_register(a,b,c,d,e,f,g){
+    let id = useParams()
+    let user = {
+        Campaña: id,
+        Nombre: a,
+        Apellido: b,
+        Género: c,
+        Edad: d,
+        Teléfono: e,
+        Correo: f,
+        Dirección: g,
+    };
+
+    arraycampanas.push(user);
+    console.log(arraycampanas);
+    localStorage.setItem(`${id}`, JSON.stringify(arraycampanas, getCircularReplacer()));    
+}
 
 export const Register = () => {
     return(
@@ -21,7 +52,6 @@ export const Register = () => {
             </div>
             <div>
                 Género <select id = 'gender'>
-                    <option value = '1'> </option>
                     <option value = '2'> Hombre </option>
                     <option value = '3'> Mujer </option>
                     <option value = '4'> No binario</option>
@@ -41,7 +71,18 @@ export const Register = () => {
                 Dirección <input type = 'text' id = 'address'/>
             </div>
             <div>
-                <button>Cancelar</button> <button>Listo</button>
+                <NavLink to = '/'>
+                    <button>Cancelar</button>
+                </NavLink>
+                <NavLink to = '/'>
+                    <button onClick = {() => save_register(document.getElementById('name').value, 
+                    document.getElementById('surname').value,
+                    document.getElementById('gender').value,
+                    document.getElementById('age').value,
+                    document.getElementById('phone').value,
+                    document.getElementById('mail').value,
+                    document.getElementById('address').value)} >Listo</button>
+                </NavLink>
             </div>
         </div>
     )
